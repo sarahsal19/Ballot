@@ -29,12 +29,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="2dp"
+                tools:layout_marginLeft="18dp"
                 tools:scaleType="fitStart"
                 tools:srcCompat="@drawable/ic_title" />
 
             <EditText
                 android:id="@+id/poll_title"
-                android:layout_width="match_parent"
+                android:layout_width="340dp"
                 android:layout_height="60dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/edit_text_box"
@@ -54,13 +55,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
                 android:layout_marginRight="4dp"
                 android:scaleType="fitStart"
                 tools:srcCompat="@drawable/ic_question" />
 
             <EditText
                 android:id="@+id/poll_question"
-                android:layout_width="0dp"
+                android:layout_width="340dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/edit_text_box"
