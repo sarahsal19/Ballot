@@ -20,7 +20,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        postPollBtn = findViewById(R.id.btnSubmit_login);
+        postPollBtn = findViewById(R.id.goPostPoll);
        // text = findViewById(R.id.changeText);
         Intent intent = getIntent();
         String s2 = intent.getStringExtra("email");
