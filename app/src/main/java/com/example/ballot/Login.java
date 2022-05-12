@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.ballot.Sql.DBHelper;
 public class Login extends AppCompatActivity {
     EditText email , password;
+    String nameFromDB;
     Button btnSubmit;
     TextView createAcc;
     DBHelper dbHelper;
@@ -35,8 +36,13 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this,"No entries Exists",Toast.LENGTH_LONG).show();
                 }
                 if (loginCheck(cursor,emailCheck,passCheck)) {
+                    nameFromDB = cursor.getString(1);
                     Intent intent = new Intent(Login.this,Home.class);
-                    intent.putExtra("email",emailCheck);
+                    Bundle extras = new Bundle();
+                    extras.putString("EXTRA_USERNAME",nameFromDB);
+                    extras.putString("EXTRA_Email",emailCheck);
+                    intent.putExtras(extras);
+                   // intent.putExtra("userInfo",new String[] { emailCheck, nameFromDB});
                     email.setText("");
                     password.setText("");
                     startActivity(intent);

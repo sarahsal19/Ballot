@@ -13,14 +13,57 @@
         android:orientation="vertical"
         android:gravity="center"
         >
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="176dp"
+            android:layout_height="170dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/profile"
+            android:visibility="visible" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Profile"
+            android:textSize="50sp" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:id="@+id/changeText"
+            android:id="@+id/changeName"
             android:gravity="center"
             android:editable="false"
             android:background="@drawable/edit_text_box"
+            android:textSize="19sp"
             android:padding="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/changeEmail"
+            android:gravity="center"
+            android:editable="false"
+            android:background="@drawable/edit_text_box"
+            android:textSize="19sp"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_view"
+            android:fontFamily="sans-serif-black"
+            android:padding="10dp"
+            android:text="LogOut"
+            android:textColor="#1B1515"
+            android:textSize="18sp" />
+
     </LinearLayout>
 </RelativeLayout>
