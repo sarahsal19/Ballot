@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 public class Home extends AppCompatActivity {
     TextView text;
-
+    Button postPollBtn;
     @Override
     public void onBackPressed() {
         Home.this.finish();
@@ -17,11 +19,24 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        text = findViewById(R.id.changeText);
+
+        postPollBtn = findViewById(R.id.btnSubmit_login);
+       // text = findViewById(R.id.changeText);
         Intent intent = getIntent();
         String s2 = intent.getStringExtra("email");
         text.setText(s2);
 
+
+        // onClick post poll button
+        postPollBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    // go to post a poll screen (make sure it work)
+                    Intent intent = new Intent(Home.this,PostAPoll.class);
+                    startActivity(intent);
+
+            }
+        });
 
     }
 }
