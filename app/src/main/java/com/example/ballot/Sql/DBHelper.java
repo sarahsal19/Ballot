@@ -57,6 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Boolean insertPoll(String title,String question,String latitude, String longitude){
 
+        SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("title",title);
         contentValues.put("question",question);
@@ -91,6 +92,30 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor = db.rawQuery(query, null);
     }
     return cursor;
+}
+    public Boolean updateVotNum(String title, int i, int total){
+
+    SQLiteDatabase DB= this.getWritableDatabase();
+    ContentValues contentValues=new ContentValues();
+    if(i == 1){
+        contentValues.put("yes",total);
+    }
+    if(i == 0){
+        contentValues.put("noo",total);
+    }
+
+    Cursor cursor=DB.rawQuery("SELECT * FROM Polls where title=?", new String[]{title});
+
+    if(cursor.getCount()>0){
+        long result=DB.update("Polls", contentValues,"title= ?", new String[]{title});
+
+        if(result==-1){
+            return false;
+        }
+
+        return true;}
+
+    return false;
 }
 
 }

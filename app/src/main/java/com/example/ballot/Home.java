@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.ballot.Sql.DBHelper;
+
 public class Home extends AppCompatActivity {
     TextView text;
     Button postPollBtn;
@@ -27,8 +30,11 @@ public class Home extends AppCompatActivity {
 //        Intent intent = getIntent();
 //        String s2 = intent.getStringExtra("email");
 //        text.setText(s2);
-
-
+        DBHelper dbHelper;
+        dbHelper = new DBHelper(this);
+        dbHelper.insertPoll("T1","Q1","37.4219983","-122.084");
+        dbHelper.insertPoll("T2","Q2","37.4219983","-122.084");
+        dbHelper.insertPoll("T3","Q3","37.4219983","-122.084");
         // onClick post poll button
         viewPollBtn.setOnClickListener(new View.OnClickListener() {
             @Override
