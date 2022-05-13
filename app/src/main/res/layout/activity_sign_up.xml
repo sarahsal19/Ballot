@@ -8,7 +8,6 @@
     android:background="@drawable/background_main"
     android:scrollbars="vertical">
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
         <LinearLayout
@@ -43,14 +42,14 @@
                 android:id="@+id/textName"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/edit_text_box"
                 android:layout_marginBottom="10dp"
-                android:inputType="textPersonName"
-                android:hint="Name"
-                android:gravity="center"
-                android:padding="20dp"
+                android:background="@drawable/edit_text_box"
                 android:drawableStart="@drawable/ic_name"
-                />
+                android:drawableLeft="@drawable/ic_name"
+                android:gravity="center"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:padding="20dp" />
 <!--            <EditText-->
 <!--                android:id="@+id/textNumber"-->
 <!--                android:layout_width="match_parent"-->
@@ -67,26 +66,27 @@
                 android:id="@+id/textEmail"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/edit_text_box"
                 android:layout_marginBottom="10dp"
-                android:inputType="textEmailAddress"
-                android:hint="Email"
-                android:gravity="center"
-                android:padding="20dp"
+                android:background="@drawable/edit_text_box"
                 android:drawableStart="@drawable/ic_mail"
-                />
+                android:drawableLeft="@drawable/ic_mail"
+                android:gravity="center"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="20dp" />
+
             <EditText
                 android:id="@+id/textPass"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/edit_text_box"
                 android:layout_marginBottom="10dp"
-                android:inputType="numberPassword"
-                android:hint="Password"
-                android:gravity="center"
-                android:padding="20dp"
+                android:background="@drawable/edit_text_box"
                 android:drawableStart="@drawable/ic_lock"
-                />
+                android:drawableLeft="@drawable/ic_lock"
+                android:gravity="center"
+                android:hint="Password"
+                android:inputType="numberPassword"
+                android:padding="20dp" />
             <Button
                 android:id="@+id/btnSignUpAcc"
                 android:layout_width="250dp"

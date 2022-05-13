@@ -36,7 +36,7 @@ public class PostAPoll extends AppCompatActivity implements LocationListener{
         dbHelper = new DBHelper(this);
         // reference so that I can get the location
          locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+         //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         // for validation:
         // check if the 2 fields are empty
         // if not: save the title, question and the user location to the Polls table in DB and show toast
