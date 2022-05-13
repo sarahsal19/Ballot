@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ballot">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+
     <application
 
         android:allowBackup="true"
@@ -12,6 +17,9 @@
         android:theme="@style/Theme.Ballot">
         <activity
             android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".ViewPoll"
             android:exported="false" />
         <activity
             android:name=".SignUp"
@@ -31,11 +39,7 @@
         <activity android:name=".PostAPoll"
             android:exported="false"/>
     </application>
-// 8 17
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="30"        />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
+<!--    <uses-sdk-->
+<!--        android:minSdkVersion="8"-->
+<!--        android:targetSdkVersion="30"/>-->
 </manifest>
