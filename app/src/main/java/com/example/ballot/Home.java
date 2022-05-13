@@ -22,9 +22,9 @@ public class Home extends AppCompatActivity {
 
         postPollBtn = findViewById(R.id.goPostPoll);
        // text = findViewById(R.id.changeText);
-        Intent intent = getIntent();
-        String s2 = intent.getStringExtra("email");
-        text.setText(s2);
+       // Intent intent = getIntent();
+       // String s2 = intent.getStringExtra("email");
+       // text.setText(s2);
 
 
         // onClick post poll button
