@@ -15,6 +15,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +31,7 @@ public class PostAPoll extends AppCompatActivity //implements LocationListener
 {
     EditText title , question;
     Button submitBtn;
-    DBHelper dbHelper;
+    DBHelper db;
    // protected LocationManager locationManager;
    // protected LocationListener locationListener;
     protected Context context;
@@ -47,7 +48,7 @@ public class PostAPoll extends AppCompatActivity //implements LocationListener
         question=findViewById(R.id.poll_question);
         submitBtn = findViewById(R.id.poll_submit);
         // make sure of the helper
-        dbHelper = new DBHelper(this);
+        db = new DBHelper(this);
         // reference so that I can get the location
 
           //  locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -157,10 +158,10 @@ enable_button();
                 // Add the new poll to polls table (trim them)
                 // id (PK) | title | question | latitude | longitude
                 System.out.println("lat is "+ latitude+ " long is "+longitude);
-                boolean result =dbHelper.insertPoll(titleCheck,questionCheck,latitude,longitude);
+                boolean result =db.insertPoll(titleCheck,questionCheck,latitude,longitude);
                 if (result){
                     showAToast("Poll was submitted successfully");
-printTable();
+                 //   printTable();
                     // go to home screen
                     Intent intent = new Intent(PostAPoll.this,Home.class);
                     title.setText("");
@@ -170,7 +171,7 @@ printTable();
                     showAToast("Something went wrong, poll was not submitted ");
                 }
 
-                dbHelper.close();
+                db.close();
             }
         });
 
@@ -222,7 +223,7 @@ printTable();
         return true;
     }
 
-
+/*
     public void printTable() {
         String tableString = "";
 
@@ -242,10 +243,16 @@ int longiPoll = cursor.getColumnIndex("longitude");
             columns[3] = Integer.toString((cursor.getInt(latiPoll)));
             columns[4] = Integer.toString((cursor.getInt(longiPoll)));
 
-            tableString = columns[0]+ " "+columns[1]+" "+columns[2]+ " "+columns[3]+ " "+columns[4];
+            tableString += ("\n" +columns[0]+ " "
+                                 +columns[1]+ " "
+                                 +columns[2]+ " "
+                                 +columns[3]+ " "
+                                 +columns[4]);
         }
+        Log.d("printTable", tableString);
          System.out.println(tableString);
+        dbHelper.close();
     }
-
+*/
 
 }

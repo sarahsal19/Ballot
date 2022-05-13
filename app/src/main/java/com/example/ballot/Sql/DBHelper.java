@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
-    SQLiteDatabase DB = this.getWritableDatabase();
+   // SQLiteDatabase DB = this.getWritableDatabase();
 
     public DBHelper(Context context ) {
         super(context,"UserData",null, 1);
@@ -45,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Boolean insertPoll(String title,String question,String latitude, String longitude){
-
+        SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("title",title);
         contentValues.put("question",question);
@@ -69,7 +69,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getLastPollDataCheck(){
-        Cursor cursor = DB.rawQuery("Select * from Polls ORDER BY pollID DESC LIMIT 1", null);
+        SQLiteDatabase DB = this.getWritableDatabase();
+        String [] columns = {"pollID", "title","question", "latitude", "longitude"};
+
+        Cursor cursor = DB.query("Polls", columns,null,null,null,null, "pollID");
         return cursor;
     }
 }
