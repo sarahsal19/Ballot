@@ -24,6 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         DB.execSQL("drop Table if exists Polls");
     }
+
     public Boolean insetUserData(String name,String email,String password){
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -64,6 +65,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getData(){
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("Select * from Userdetails ",null);
+        return cursor;
+    }
+
+    public Cursor getLastPollDataCheck(){
+        Cursor cursor = DB.rawQuery("Select * from Polls ORDER BY pollID DESC LIMIT 1", null);
         return cursor;
     }
 }

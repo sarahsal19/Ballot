@@ -142,10 +142,14 @@ enable_button();
                 // check fields
                 if (isEmpty(title)){
                     title.setError("Title can not be empty");
+                    showAToast("Title can not be empty");
+                    return;
                 }
 
                 if (isEmpty(question)){
+                    showAToast("Question can not be empty");
                     question.setError("Question can not be empty");
+                    return;
                 }
 
                 // get user current location (method onLocationChanged)
@@ -156,7 +160,7 @@ enable_button();
                 boolean result =dbHelper.insertPoll(titleCheck,questionCheck,latitude,longitude);
                 if (result){
                     showAToast("Poll was submitted successfully");
-
+printTable();
                     // go to home screen
                     Intent intent = new Intent(PostAPoll.this,Home.class);
                     title.setText("");
@@ -217,5 +221,31 @@ enable_button();
 
         return true;
     }
+
+
+    public void printTable() {
+        String tableString = "";
+
+        Cursor cursor = dbHelper.getLastPollDataCheck();
+String [] columns = {"pollID", "title","question", "latitude", "longitude"};
+int idpoll = cursor.getColumnIndex("pollID");
+int titlePoll = cursor.getColumnIndex("title");
+int qPoll = cursor.getColumnIndex("question");
+int latiPoll = cursor.getColumnIndex("latitude");
+int longiPoll = cursor.getColumnIndex("longitude");
+
+
+        while (cursor.moveToNext()){
+            columns[0] = Integer.toString((cursor.getInt(idpoll)));
+            columns[1] = Integer.toString((cursor.getInt(titlePoll)));
+            columns[2] = Integer.toString((cursor.getInt(qPoll)));
+            columns[3] = Integer.toString((cursor.getInt(latiPoll)));
+            columns[4] = Integer.toString((cursor.getInt(longiPoll)));
+
+            tableString = columns[0]+ " "+columns[1]+" "+columns[2]+ " "+columns[3]+ " "+columns[4];
+        }
+         System.out.println(tableString);
+    }
+
 
 }
