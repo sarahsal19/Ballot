@@ -58,6 +58,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("longitude",longitude);
         contentValues.put("yes",yesVal);
         contentValues.put("noo",noVal);
+
         long result= DB.insert("PollsWithVal",null,contentValues);
         if (result == -1){
             return false;

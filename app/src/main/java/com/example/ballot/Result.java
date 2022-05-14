@@ -20,8 +20,8 @@ public class Result extends AppCompatActivity {
         // get intent content
         String titleP= getIntent().getStringExtra("title");
         String quesP= getIntent().getStringExtra("ques");
-        int yP = getIntent().getIntExtra("yesT", 0);
-        int nP = getIntent().getIntExtra("noT", 0);
+        String yP = getIntent().getStringExtra("yesT");
+        String nP = getIntent().getStringExtra("noT");
         // display in the page
         title.setText(titleP);
         ques.setText(quesP);

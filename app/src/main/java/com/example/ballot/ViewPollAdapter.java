@@ -9,9 +9,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +32,8 @@ public class ViewPollAdapter extends RecyclerView.Adapter<ViewPollAdapter.MyView
     private ArrayList pollTitle, pollQues;
 
     ViewPollAdapter(Activity activity, Context context, ArrayList pollTitle, ArrayList pollQues){
+
+        Log.d("in adap","jjjj");
         this.activity = activity;
         this.context = context;
         this.pollTitle = pollTitle;
@@ -38,6 +43,8 @@ public class ViewPollAdapter extends RecyclerView.Adapter<ViewPollAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.d("in adap2","jjjj");
+
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.activity_view_poll, parent, false);
         return new MyViewHolder(view);
@@ -46,6 +53,10 @@ public class ViewPollAdapter extends RecyclerView.Adapter<ViewPollAdapter.MyView
     //@RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+        Log.d("in adap3","jjjj");
+        Log.d("in adap","jjjj");
+
+
         holder.title.setText(String.valueOf(pollTitle.get(position)));
 
         holder.voteBtn.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +108,8 @@ public class ViewPollAdapter extends RecyclerView.Adapter<ViewPollAdapter.MyView
             mainLayout = itemView.findViewById(R.id.layoutV);
 
             //Animate Recyclerview
-            //Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
-            //mainLayout.setAnimation(translate_anim);
+//            Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.);
+//            mainLayout.setAnimation(translate_anim);
         }
 
     }

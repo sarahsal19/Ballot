@@ -1,6 +1,7 @@
 package com.example.ballot;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -32,13 +33,28 @@ public class VotePoll extends AppCompatActivity {
     String pollQ;
     int totalY = 0;
     int totalN = 0;
-
+TextView textOnToolBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote_poll);
+// for toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        textOnToolBar = (TextView) findViewById(R.id.SetTitle_main);
+        textOnToolBar.setText("");
+
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VotePoll.this,ViewPoll.class);
+                //title.setText("");
+               // question.setText("");
+                startActivity(intent);
+            }
+        });
         DBHelper db;
         db = new DBHelper(this);
 
@@ -77,7 +93,7 @@ public class VotePoll extends AppCompatActivity {
                 }
                 sendHighNoti(pollT,pollQ,totalY,totalN);
                 // go to home screen
-                Intent intent = new Intent(VotePoll.this,Home.class);
+                Intent intent = new Intent(VotePoll.this,homeOrginal.class);
                 startActivity(intent);
             }
         });
@@ -99,7 +115,7 @@ public class VotePoll extends AppCompatActivity {
                 }
                 sendHighNoti(pollT,pollQ,totalY,totalN);
                 // go to home screen
-                Intent intent = new Intent(VotePoll.this,Home.class);
+                Intent intent = new Intent(VotePoll.this,homeOrginal.class);
                 startActivity(intent);
             }
         });
@@ -141,8 +157,8 @@ public class VotePoll extends AppCompatActivity {
         Intent intent= new Intent(VotePoll.this, Result.class);
         intent.putExtra("title",titleP);
         intent.putExtra("ques",quesP);
-        intent.putExtra("yesT",totalY);
-        intent.putExtra("noT",totalN);
+        intent.putExtra("yesT",String.valueOf(totalY));
+        intent.putExtra("noT",String.valueOf(totalN));
         pendingIntent= PendingIntent.getActivity(this, id, intent, PendingIntent.FLAG_MUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(VotePoll.this, ch1)

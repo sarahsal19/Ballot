@@ -14,29 +14,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="130dp"
 
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
         android:text="Volume Mode:"
         android:textSize="30dp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/silent_Mode2"
-        android:layout_width="match_parent"
+        android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/btn_view"
         android:text="Silent"
         app:cornerRadius="50px" />
 
     <Button
         android:id="@+id/normalMode2"
-        android:layout_width="match_parent"
+        android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:background="@drawable/btn_view"
         android:text="Normal"
-        app:cornerRadius="50px"
 
-        />
+        app:cornerRadius="50px" />
 </LinearLayout>

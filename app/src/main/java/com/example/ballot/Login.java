@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.ballot.Sql.DBHelper;
 public class Login extends AppCompatActivity {
+    public static String name1;
+    public static String email1;
+
     EditText email , password;
     String nameFromDB;
     Button btnSubmit;
@@ -37,18 +41,23 @@ public class Login extends AppCompatActivity {
                 }
                 if (loginCheck(cursor,emailCheck,passCheck)) {
                     nameFromDB = cursor.getString(1);
-                    Intent intent = new Intent(Login.this,Home.class);
+                    //Intent intent = new Intent(Login.this,Home.class);
+//                    Bundle extras = new Bundle();
+//                    extras.putString("EXTRA_USERNAME",nameFromDB);
+//                    extras.putString("EXTRA_Email",emailCheck);
+                   // intent.putExtras(extras);
+                   // intent.putExtra("userInfo",new String[] { emailCheck, nameFromDB});
+                    email.setText("");
+                    password.setText("");
+                    name1= nameFromDB;
+                    email1 = emailCheck;
+                    // by Modhi
+                    // got to home orginal
+                    Intent intent = new Intent(Login.this,homeOrginal.class);
                     Bundle extras = new Bundle();
                     extras.putString("EXTRA_USERNAME",nameFromDB);
                     extras.putString("EXTRA_Email",emailCheck);
                     intent.putExtras(extras);
-                   // intent.putExtra("userInfo",new String[] { emailCheck, nameFromDB});
-                    email.setText("");
-                    password.setText("");
-                    
-                    // by Modhi
-                    // got to home orginal
-                   // Intent intent = new Intent(Login.this,homeOrginal.class);
                     startActivity(intent);
                 }else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);

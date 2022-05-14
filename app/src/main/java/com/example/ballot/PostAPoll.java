@@ -37,7 +37,7 @@ public class PostAPoll extends LocationBaseActivity
     DBHelper db;
     protected Context context;
     String provider;
-    String latitude,longitude;
+    String latitude,longitude, NameHolder, EmailHolder;
     BroadcastReceiver broadcastReceiver;
 
     // for location
@@ -76,7 +76,8 @@ public class PostAPoll extends LocationBaseActivity
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PostAPoll.this,Home.class);
+                Intent intent = new Intent(PostAPoll.this,homeOrginal.class);
+
                 title.setText("");
                 question.setText("");
                 startActivity(intent);
@@ -146,9 +147,9 @@ public class PostAPoll extends LocationBaseActivity
                 boolean result =db.insertPollWithVal(title.getText().toString(),question.getText().toString(),latitude,longitude,0,0);
                 if (result){
                     showAToast("Poll was submitted successfully");
-                    printTable();
+                   // printTable();
                     // go to home screen
-                    Intent intent = new Intent(PostAPoll.this,Home.class);
+                    Intent intent = new Intent(PostAPoll.this,homeOrginal.class);
                     title.setText("");
                     question.setText("");
                     startActivity(intent);
