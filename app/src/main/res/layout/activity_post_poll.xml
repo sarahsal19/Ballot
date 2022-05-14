@@ -67,7 +67,7 @@
                 android:layout_weight="0"
                 android:background="@drawable/edit_text_box"
                 android:gravity="top|left"
-                android:hint="Enter Question"
+                android:hint="Enter Description"
                 android:inputType="textMultiLine"
                 android:maxLength="250"
                 android:padding="1dp" />
