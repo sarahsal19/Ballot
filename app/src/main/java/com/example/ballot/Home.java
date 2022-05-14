@@ -1,6 +1,7 @@
 package com.example.ballot;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,22 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // for toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_baseline_login_24));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this,Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
 
         postPollBtn = findViewById(R.id.goPostPoll);
        // text = findViewById(R.id.changeText);
