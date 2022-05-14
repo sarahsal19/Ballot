@@ -6,21 +6,14 @@ import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.content.Context;
 import android.location.Location;
-import android.location.Address;
-import android.location.Geocoder;
 import com.yayandroid.locationmanager.base.LocationBaseActivity;
 import com.yayandroid.locationmanager.configuration.Configurations;
 import com.yayandroid.locationmanager.configuration.LocationConfiguration;
-import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,71 +27,23 @@ import androidx.core.content.ContextCompat;
 
 import com.example.ballot.Sql.DBHelper;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
 
 
-
-public class PostAPoll extends LocationBaseActivity//AppCompatActivity //implements LocationListener
+public class PostAPoll extends LocationBaseActivity
 {
     EditText title , question;
     TextView textOnToolBar;
     Button submitBtn;
     DBHelper db;
-   // protected LocationManager locationManager;
-   // protected LocationListener locationListener;
     protected Context context;
     String provider;
     String latitude,longitude;
     BroadcastReceiver broadcastReceiver;
-    String cooordinates;
-   /* @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_poll);
-
-        title=findViewById(R.id.poll_title);
-        question=findViewById(R.id.poll_question);
-        submitBtn = findViewById(R.id.poll_submit);
-        // make sure of the helper
-        db = new DBHelper(this);
-        // reference so that I can get the location
-
-          //  locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        // locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-
-         // added for location /////////////////////////////////////////////////////
-
- if(!runtime_permissions())
-enable_button();
-
-
-
-
-
-    }*/
-
-
 
     // for location
     @Override
     protected void onResume(){
         super.onResume();
-        /*
-        if (broadcastReceiver == null){
-            broadcastReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    cooordinates = intent.getStringExtra("coordinates");
-                    latitude = intent.getStringExtra("latitude");
-                    longitude = intent.getStringExtra("longitude");
-
-                }
-            };
-        }
-        registerReceiver(broadcastReceiver,new IntentFilter("swe483.action.GPS_LOCATION"));
-        */
 
         if (getLocationManager().isWaitingForLocation() && !getLocationManager().isAnyDialogShowing()){
             Log.d("display","display progress");
@@ -146,8 +91,6 @@ enable_button();
 
 
         db = new DBHelper(this);
-        // delete records
-       // db.deletePollsRecords();
 
         initLocation();
         enable_button();
@@ -200,7 +143,7 @@ enable_button();
                     return;
                 }
 
-                boolean result =db.insertPoll(title.getText().toString(),question.getText().toString(),latitude,longitude);
+                boolean result =db.insertPollWithVal(title.getText().toString(),question.getText().toString(),latitude,longitude,0,0);
                 if (result){
                     showAToast("Poll was submitted successfully");
                     printTable();
@@ -220,6 +163,7 @@ enable_button();
 
     }
 
+    // not used
     public boolean runtime_permissions(){
         if(Build.VERSION.SDK_INT >=23 && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String [] {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},100);
@@ -229,6 +173,7 @@ enable_button();
         return false;
     }
 
+    // not used i guess
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResult){
         super.onRequestPermissionsResult(requestCode,permissions,grantResult);
@@ -261,7 +206,7 @@ enable_button();
         String tableString = "";
 
         Cursor cursor = db.getLastPollDataCheck();
-String [] columns = {"pollID", "title","question", "latitude", "longitude"};
+String [] columns = {"pollID", "title","question", "latitude", "longitude", "yes", "noo"};
 int idpoll = cursor.getColumnIndex("pollID");
 int titlePoll = cursor.getColumnIndex("title");
 int qPoll = cursor.getColumnIndex("question");
@@ -277,19 +222,20 @@ Log.d("question is",String.valueOf(qPoll));
             columns[2] = cursor.getString(qPoll);
             columns[3] = cursor.getString(latiPoll);
             columns[4] = cursor.getString(longiPoll);
-         //   columns[5] = Integer.toString((cursor.getInt(yesPoll)));
-          //  columns[6] = Integer.toString((cursor.getInt(nooPoll)));
+            columns[5] = Integer.toString((cursor.getInt(yesPoll)));
+            columns[6] = Integer.toString((cursor.getInt(nooPoll)));
 
             tableString += ("\n" +columns[0]+ " "
                                  +columns[1]+ " "
                                  +columns[2]+ " "
                                  +columns[3]+ " "
-                                 +columns[4]);//+ " "
-                              //   +columns[5]+ " "
-                               //   +columns[6]);
+                                 +columns[4]+ " "
+                                 +columns[5]+ " "
+                                 +columns[6]);
         }
         Log.d("printTable", tableString);
        //  System.out.println(tableString);
+        cursor.close();
         db.close();
     }
 
