@@ -46,7 +46,7 @@
             android:gravity="center"
             android:padding="20dp"
             android:drawableStart="@drawable/ic_mail"
-            />
+            android:drawableLeft="@drawable/ic_mail" />
         <EditText
             android:id="@+id/text_pass"
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
             android:gravity="center"
             android:padding="20dp"
             android:drawableStart="@drawable/ic_lock"
-            />
+            android:drawableLeft="@drawable/ic_lock" />
 
 
         <Button

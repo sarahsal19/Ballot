@@ -13,12 +13,13 @@
         android:orientation="vertical"
         android:gravity="center"
         >
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="176dp"
             android:layout_height="170dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/profile"
+            android:src="@drawable/logo"
             android:visibility="visible" />
         <TextView
             android:layout_width="match_parent"
@@ -32,26 +33,30 @@
             android:textSize="50sp" />
 
         <EditText
+            android:id="@+id/changeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:id="@+id/changeName"
-            android:gravity="center"
-            android:editable="false"
             android:background="@drawable/edit_text_box"
-            android:textSize="19sp"
-            android:padding="10dp"/>
+            android:editable="false"
+            android:gravity="center"
+            android:hint="Name"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textSize="19sp" />
 
         <EditText
+            android:id="@+id/changeEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:id="@+id/changeEmail"
-            android:gravity="center"
-            android:editable="false"
             android:background="@drawable/edit_text_box"
-            android:textSize="19sp"
-            android:padding="10dp"/>
+            android:editable="false"
+            android:gravity="center"
+            android:hint="Email"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textSize="19sp" />
 
         <Button
             android:id="@+id/btn_logout"

@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ballot">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -32,11 +38,20 @@
         
         <activity android:name=".homeOrginal"
             android:exported="false"/>
+
+        <activity android:name=".SilentMode"
+            android:exported="false"/>
+
+        <activity android:name=".Result"
+            android:exported="false"/>
+
+        <activity android:name=".VotePoll"
+            android:exported="false"/>
+
+        <activity android:name=".ViewPoll"
+            android:exported="false"/>
     </application>
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17"        />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
