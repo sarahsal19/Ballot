@@ -6,9 +6,22 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
+
+    private static DBHelper instance = null;// Sara
+    private static Context context;// Sara
+
     public DBHelper(Context context ) {
         super(context,"UserData",null, 1);
     }
+    //Sara
+    public static DBHelper getInstance(){
+        if (instance == null){
+            instance = new DBHelper(context);
+        }
+
+        return instance;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase DB) {
         DB.execSQL("create Table UserDetails(userID TEXT primary key,name TEXT,password PASSWORD)");
@@ -40,6 +53,31 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from Userdetails ",null);
         return cursor;
     }
+    // Sara
+    public Cursor readAllData() {
 
 
+        // String query = "SELECT * FROM poll where Usernamee=?\",new String[]{UserName}";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+
+            cursor=  db.rawQuery("Select * from poll ", null);
+
+        }
+        return cursor;
+    }
+    public Cursor readAllVotes2(String idd) {
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from pollvoter where pollid = ? ", new String[]{idd});
+
+
+        if(db != null){
+            return cursor ;
+        }
+        return cursor;
+    }
 }
