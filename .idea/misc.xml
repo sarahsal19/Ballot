@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/drawable-v24/logo_foreground.xml" value="0.2195" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/drawable/post_poll_image2_background.xml" value="0.224" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/activity_home_orginal.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/activity_post_poll.xml" value="0.42397914856646396" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/activity_view_poll.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/activity_vote_poll.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/result.xml" value="0.264" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/silent_mode.xml" value="0.1" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sarah/OneDrive/Documents/GitHub/Ballot/app/src/main/res/layout/view_poll_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sarah/AndroidStudioProjects/Ballot/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.169" />
         <entry key="..\:/Users/sarah/AndroidStudioProjects/Ballot/app/src/main/res/drawable-v24/logo_foreground.xml" value="0.172" />
         <entry key="..\:/Users/sarah/AndroidStudioProjects/Ballot/app/src/main/res/drawable/background_main.xml" value="0.1355" />
@@ -23,50 +36,10 @@
         <entry key="..\:/Users/sarah/AndroidStudioProjects/Ballot/app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="..\:/Users/sarah/AndroidStudioProjects/Ballot/app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.1" />
         <entry key="..\:/Users/sarah/AndroidStudioProjects/Ballot/app/src/main/res/mipmap-anydpi-v26/logo_round.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable-v24/logo_foreground.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/background_main.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/btn_view.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/edit_text_box.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_lock.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_mail.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_name.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_question.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_title.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/post_poll_image2_background.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/vote_background.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.22870483398437502" />
-        <entry key="app/src/main/res/layout/activity_home_orginal.xml" value="0.175" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.19453042065906692" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15833333333333333" />
-        <entry key="app/src/main/res/layout/activity_post_poll.xml" value="0.21623382568359373" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1546875" />
-        <entry key="app/src/main/res/layout/activity_view_poll.xml" value="0.19676361083984378" />
-        <entry key="app/src/main/res/layout/activity_vote_poll.xml" value="0.20805969238281247" />
-        <entry key="app/src/main/res/layout/result.xml" value="0.24574127197265633" />
-        <entry key="app/src/main/res/layout/silent-mode.xml" value="0.15833333333333333" />
-        <entry key="app/src/main/res/layout/silent_mode.xml" value="0.2321355183919271" />
-        <entry key="app/src/main/res/layout/toolbar.xml" value="0.1546875" />
-        <entry key="app/src/main/res/layout/view_poll_list.xml" value="0.17706247965494792" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/logo_round.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/post_poll_image.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/post_poll_image2.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/post_poll_image2_round.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/post_poll_image_round.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/vote.xml" value="0.1" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/vote_round.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
