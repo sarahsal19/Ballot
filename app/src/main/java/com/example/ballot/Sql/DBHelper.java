@@ -9,14 +9,15 @@ public class DBHelper extends SQLiteOpenHelper {
    // SQLiteDatabase DB = this.getWritableDatabase();
 
     public DBHelper(Context context ) {
-        super(context,"UserData",null, 1);
+        super(context,"UserData",null, 2);
+
     }
     @Override
     public void onCreate(SQLiteDatabase DB) {
         DB.execSQL("create Table UserDetails(userID TEXT primary key,name TEXT,password PASSWORD)");
 
         // create polls table
-        DB.execSQL("create Table Polls(pollID INTEGER primary key AUTOINCREMENT, title TEXT,question TEXT, latitude TEXT, longitude TEXT)");
+        DB.execSQL("create Table Polls(pollID INTEGER primary key AUTOINCREMENT, title TEXT,question TEXT, latitude TEXT, longitude TEXT, yes INTEGER, noo INTEGER)");
     }
     @Override
     public void onUpgrade(SQLiteDatabase DB, int i, int i1) {
@@ -51,7 +52,8 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("question",question);
         contentValues.put("latitude",latitude);
         contentValues.put("longitude",longitude);
-
+        contentValues.put("yes",0);
+        contentValues.put("noo",0);
         long result= DB.insert("Polls",null,contentValues);
         if (result == -1){
             return false;
@@ -69,10 +71,17 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Cursor getLastPollDataCheck(){
-        SQLiteDatabase DB = this.getWritableDatabase();
+        SQLiteDatabase DB = this.getReadableDatabase();
+
         String [] columns = {"pollID", "title","question", "latitude", "longitude"};
 
         Cursor cursor = DB.query("Polls", columns,null,null,null,null, "pollID");
         return cursor;
     }
+
+    public void deletePollsRecords(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        DB.execSQL("delete from Polls");
+    }
+
 }

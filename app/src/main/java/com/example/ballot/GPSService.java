@@ -1,3 +1,5 @@
+package com.example.ballot;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +24,10 @@ public class GPSService extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
+
+    @Override
+    public void onCreate(){
+    }
     @Override
     public void onDestroy(){
         super.onDestroy();
@@ -34,8 +40,8 @@ public class GPSService extends Service {
 
     public int onStartCommand(Intent intent, int flags, int startId){
         super.onStartCommand(intent,flags,startId);
-        triggerService = new Thread(new Runnable() {
-           // @Override
+        triggerService = new Thread( new Runnable() {
+            // @Override
             public void run() {
                 try {
                     Looper.prepare();
@@ -48,8 +54,8 @@ public class GPSService extends Service {
 
                             Intent myFilter = new Intent(GPS_Filter);
                             myFilter.putExtra("coordinates", lat + " " + lng);
-                            myFilter.putExtra("lat", lat);
-                            myFilter.putExtra("lng", lng);
+                            myFilter.putExtra("latitude", lat);
+                            myFilter.putExtra("longitude", lng);
                             sendBroadcast(myFilter);
                         }
                     };
@@ -59,7 +65,7 @@ public class GPSService extends Service {
                     Looper.loop();
                 }
                 catch(Exception e){
-                    Log.e("MYGPS", e.getMessage());
+                    Log.e("MAPS", e.getMessage());
                 }
             }
         });

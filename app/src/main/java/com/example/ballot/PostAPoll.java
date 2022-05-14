@@ -11,25 +11,39 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.content.Context;
 import android.location.Location;
-import android.location.LocationListener;
+import android.location.Address;
+import android.location.Geocoder;
+import com.yayandroid.locationmanager.base.LocationBaseActivity;
+import com.yayandroid.locationmanager.configuration.Configurations;
+import com.yayandroid.locationmanager.configuration.LocationConfiguration;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.example.ballot.Sql.DBHelper;
 
-public class PostAPoll extends AppCompatActivity //implements LocationListener
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
+
+
+public class PostAPoll extends LocationBaseActivity//AppCompatActivity //implements LocationListener
 {
     EditText title , question;
+    TextView textOnToolBar;
     Button submitBtn;
     DBHelper db;
    // protected LocationManager locationManager;
@@ -39,7 +53,7 @@ public class PostAPoll extends AppCompatActivity //implements LocationListener
     String latitude,longitude;
     BroadcastReceiver broadcastReceiver;
     String cooordinates;
-    @Override
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_poll);
@@ -62,57 +76,8 @@ enable_button();
 
 
 
-        // added for location /////////////////////////////////////////////////////
 
-         // for validation:
-        // check if the 2 fields are empty
-        // if not: save the title, question and the user location to the Polls table in DB and show toast
-        // then set title and question to ""
-// When you need the permission, e.g. onCreate, OnClick etc.
-
-        // Add back button and toolbar
-
-        // onclick submit a poll button
-        /*
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String titleCheck = title.getText().toString();
-                String questionCheck = question.getText().toString();
-
-                // check fields
-                if (isEmpty(title)){
-                    title.setError("Title can not be empty");
-                }
-
-                if (isEmpty(question)){
-                    question.setError("Question can not be empty");
-                }
-
-                // get user current location (method onLocationChanged)
-
-                // Add the new poll to polls table (trim them)
-                // id (PK) | title | question | latitude | longitude
-                System.out.println("lat is "+ latitude+ " long is "+longitude);
-                boolean result =dbHelper.insertPoll(titleCheck,questionCheck,latitude,longitude);
-                if (result){
-                    showAToast("Poll was submitted successfully");
-
-                    // go to home screen
-                    Intent intent = new Intent(PostAPoll.this,Home.class);
-                    title.setText("");
-                    question.setText("");
-                    startActivity(intent);
-                }else {
-                    showAToast("Something went wrong, poll was not submitted ");
-                }
-
-                dbHelper.close();
-            }
-        });
-        */
-
-    }
+    }*/
 
 
 
@@ -120,35 +85,107 @@ enable_button();
     @Override
     protected void onResume(){
         super.onResume();
+        /*
         if (broadcastReceiver == null){
             broadcastReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     cooordinates = intent.getStringExtra("coordinates");
-                    latitude = intent.getStringExtra("lat");
-                    longitude = intent.getStringExtra("lng");
+                    latitude = intent.getStringExtra("latitude");
+                    longitude = intent.getStringExtra("longitude");
+
                 }
             };
         }
         registerReceiver(broadcastReceiver,new IntentFilter("swe483.action.GPS_LOCATION"));
+        */
+
+        if (getLocationManager().isWaitingForLocation() && !getLocationManager().isAnyDialogShowing()){
+            Log.d("display","display progress");
+        }
+        else{
+            initLocation();
+        }
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        if (broadcastReceiver != null){
+            unregisterReceiver(broadcastReceiver);
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_post_poll);
+
+        // for toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        textOnToolBar = (TextView) findViewById(R.id.SetTitle_main);
+        textOnToolBar.setText("");
+
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_baseline_arrow_back_24));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PostAPoll.this,Home.class);
+                title.setText("");
+                question.setText("");
+                startActivity(intent);
+            }
+        });
+
+
+
+        title=findViewById(R.id.poll_title);
+        question=findViewById(R.id.poll_question);
+        submitBtn = findViewById(R.id.poll_submit);
+
+
+        db = new DBHelper(this);
+        // delete records
+       // db.deletePollsRecords();
+
+        initLocation();
+        enable_button();
+
+/*
+        if(!runtime_permissions())
+            enable_button();
+*/
+
     }
 
     public void enable_button(){
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String titleCheck = title.getText().toString();
-                String questionCheck = question.getText().toString();
+//Runtime permissions
+                /*
+                if (ContextCompat.checkSelfPermission(PostAPoll.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED){
+                    androidx.core.app.ActivityCompat.requestPermissions(PostAPoll.this,new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                    },100);
+                }
+*/
+
+                // again
+                title = findViewById(R.id.poll_title);
+                question = findViewById(R.id.poll_question);
 
                 // check fields
                 if (isEmpty(title)){
                     title.setError("Title can not be empty");
-                    showAToast("Title can not be empty");
+                   // showAToast("Title can not be empty");
                     return;
                 }
 
                 if (isEmpty(question)){
-                    showAToast("Question can not be empty");
+                   // showAToast("Question can not be empty");
                     question.setError("Question can not be empty");
                     return;
                 }
@@ -156,22 +193,28 @@ enable_button();
                 // get user current location (method onLocationChanged)
 
                 // Add the new poll to polls table (trim them)
-                // id (PK) | title | question | latitude | longitude
+                // id (PK) | title | question | latitude | longitude | yes | noo
                 System.out.println("lat is "+ latitude+ " long is "+longitude);
-                boolean result =db.insertPoll(titleCheck,questionCheck,latitude,longitude);
+                if (latitude == null){
+                    showAToast("lat is null");
+                    return;
+                }
+
+                boolean result =db.insertPoll(title.getText().toString(),question.getText().toString(),latitude,longitude);
                 if (result){
                     showAToast("Poll was submitted successfully");
-                 //   printTable();
+                    printTable();
                     // go to home screen
                     Intent intent = new Intent(PostAPoll.this,Home.class);
                     title.setText("");
                     question.setText("");
                     startActivity(intent);
+
                 }else {
                     showAToast("Something went wrong, poll was not submitted ");
                 }
 
-                db.close();
+               // db.close();
             }
         });
 
@@ -199,16 +242,6 @@ enable_button();
     }
 
 
-
-/*
-    // set lat and long for location
-    @Override
-    public void onLocationChanged(Location location) {
-
-        latitude = String.valueOf(location.getLatitude());
-        longitude = String.valueOf(location.getLongitude());
-    }
-*/
     // show a toast
     public void showAToast(String text){
         Toast.makeText(PostAPoll.this,text,Toast.LENGTH_LONG).show();
@@ -223,36 +256,65 @@ enable_button();
         return true;
     }
 
-/*
+
     public void printTable() {
         String tableString = "";
 
-        Cursor cursor = dbHelper.getLastPollDataCheck();
+        Cursor cursor = db.getLastPollDataCheck();
 String [] columns = {"pollID", "title","question", "latitude", "longitude"};
 int idpoll = cursor.getColumnIndex("pollID");
 int titlePoll = cursor.getColumnIndex("title");
 int qPoll = cursor.getColumnIndex("question");
 int latiPoll = cursor.getColumnIndex("latitude");
 int longiPoll = cursor.getColumnIndex("longitude");
-
-
+int yesPoll = cursor.getColumnIndex("yes");
+int nooPoll = cursor.getColumnIndex("noo");
+Log.d("yes is",String.valueOf(yesPoll));
+Log.d("question is",String.valueOf(qPoll));
         while (cursor.moveToNext()){
             columns[0] = Integer.toString((cursor.getInt(idpoll)));
-            columns[1] = Integer.toString((cursor.getInt(titlePoll)));
-            columns[2] = Integer.toString((cursor.getInt(qPoll)));
-            columns[3] = Integer.toString((cursor.getInt(latiPoll)));
-            columns[4] = Integer.toString((cursor.getInt(longiPoll)));
+            columns[1] = cursor.getString(titlePoll);
+            columns[2] = cursor.getString(qPoll);
+            columns[3] = cursor.getString(latiPoll);
+            columns[4] = cursor.getString(longiPoll);
+         //   columns[5] = Integer.toString((cursor.getInt(yesPoll)));
+          //  columns[6] = Integer.toString((cursor.getInt(nooPoll)));
 
             tableString += ("\n" +columns[0]+ " "
                                  +columns[1]+ " "
                                  +columns[2]+ " "
                                  +columns[3]+ " "
-                                 +columns[4]);
+                                 +columns[4]);//+ " "
+                              //   +columns[5]+ " "
+                               //   +columns[6]);
         }
         Log.d("printTable", tableString);
-         System.out.println(tableString);
-        dbHelper.close();
+       //  System.out.println(tableString);
+        db.close();
     }
-*/
+
+    private void initLocation(){
+        getLocation();
+}
+    @Override
+    public void onLocationChanged(Location location) {
+
+            latitude = String.valueOf(location.getLatitude());
+            longitude = String.valueOf(location.getLongitude());
+
+            Log.d("lat is",latitude);
+
+    }
+
+    @Override
+    public void onLocationFailed(int type) {
+
+    }
+
+    @Override
+    public LocationConfiguration getLocationConfiguration() {
+        return Configurations.defaultConfiguration("Location permission!", "Would you mind to turn GPS on?");
+    }
+
 
 }
