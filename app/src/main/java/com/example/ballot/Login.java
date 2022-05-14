@@ -45,6 +45,10 @@ public class Login extends AppCompatActivity {
                    // intent.putExtra("userInfo",new String[] { emailCheck, nameFromDB});
                     email.setText("");
                     password.setText("");
+                    
+                    // by Modhi
+                    // got to home orginal
+                   // Intent intent = new Intent(Login.this,homeOrginal.class);
                     startActivity(intent);
                 }else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
