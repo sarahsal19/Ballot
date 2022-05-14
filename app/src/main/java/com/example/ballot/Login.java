@@ -36,7 +36,9 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this,"No entries Exists",Toast.LENGTH_LONG).show();
                 }
                 if (loginCheck(cursor,emailCheck,passCheck)) {
-                    Intent intent = new Intent(Login.this,Home.class);
+                   // Intent intent = new Intent(Login.this,Home.class);
+                    // got to home orginal
+                    Intent intent = new Intent(Login.this,homeOrginal.class);
                     intent.putExtra("email",emailCheck);
                     email.setText("");
                     password.setText("");

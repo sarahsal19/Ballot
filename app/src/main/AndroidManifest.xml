@@ -30,6 +30,8 @@
         </activity>
         <activity android:name=".PostAPoll"
             android:exported="false"/>
+        <activity android:name=".homeOrginal"
+            android:exported="false"/>
     </application>
 // 8 17
     <uses-sdk

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main">
+    android:background="@drawable/background_main"
+    tools:context=".homeOrginal">
 
     <include layout="@layout/toolbar" />
 
@@ -14,19 +16,18 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/goPostPoll"
-            tools:textSize="18sp"
+            android:id="@+id/goPostPolltwo"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:background="#CE93D8"
             android:fontFamily="sans-serif-black"
             android:padding="10dp"
             android:text="Post Poll"
-            android:textColor="#1B1515" />
+            android:textColor="#1B1515"
+            tools:textSize="18sp" />
 
         <Button
-            android:id="@+id/goViewPolls"
-            tools:textSize="18sp"
+            android:id="@+id/goViewPollstwo"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:layout_marginTop="30dp"
@@ -34,7 +35,8 @@
             android:fontFamily="sans-serif-black"
             android:padding="10dp"
             android:text="View Polls"
-            android:textColor="#1B1515" />
+            android:textColor="#1B1515"
+            tools:textSize="18sp" />
 
     </LinearLayout>
 

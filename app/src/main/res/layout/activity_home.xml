@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/goPostPoll"
+            android:id="@+id/goPostPolltwo"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:background="#CE93D8"
@@ -26,7 +26,7 @@
             tools:textSize="18sp" />
 
         <Button
-            android:id="@+id/goViewPolls"
+            android:id="@+id/goViewPollstwo"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:layout_marginTop="30dp"

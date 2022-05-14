@@ -19,7 +19,7 @@ public class homeOrginal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home_orginal);
 
         // for toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -37,7 +37,7 @@ public class homeOrginal extends AppCompatActivity {
 
 
 
-        postPollBtn = findViewById(R.id.goPostPoll);
+        postPollBtn = findViewById(R.id.goPostPolltwo);
         // text = findViewById(R.id.changeText);
         // Intent intent = getIntent();
         // String s2 = intent.getStringExtra("email");
