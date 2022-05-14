@@ -24,8 +24,7 @@ public class Home extends AppCompatActivity {
        // text = findViewById(R.id.changeText);
        // Intent intent = getIntent();
        // String s2 = intent.getStringExtra("email");
-       // text.setText(s2);
-
+       // text.setText(s2)
 
         // onClick post poll button
         postPollBtn.setOnClickListener(new View.OnClickListener() {
