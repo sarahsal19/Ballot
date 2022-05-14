@@ -12,10 +12,16 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase DB) {
         DB.execSQL("create Table UserDetails(userID TEXT primary key,name TEXT,password PASSWORD)");
+        
+            // create another polls table
+        DB.execSQL("create Table PollsWithVal(pollID INTEGER primary key AUTOINCREMENT, title TEXT,question TEXT, latitude TEXT, longitude TEXT, yes INTEGER, noo INTEGER)");
+
     }
     @Override
     public void onUpgrade(SQLiteDatabase DB, int i, int i1) {
         DB.execSQL("drop Table if exists UserDetails");
+        
+        DB.execSQL("drop Table if exists PollsWithVal");
     }
     public Boolean insetUserData(String name,String email,String password){
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -42,5 +48,32 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    // By Modhi
+        public Boolean insertPollWithVal(String title,String question,String latitude, String longitude, int yesVal, int noVal){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title",title);
+        contentValues.put("question",question);
+        contentValues.put("latitude",latitude);
+        contentValues.put("longitude",longitude);
+        contentValues.put("yes",yesVal);
+        contentValues.put("noo",noVal);
+        long result= DB.insert("PollsWithVal",null,contentValues);
+        if (result == -1){
+            return false;
+        }else {
+            DB.close();
+            return true;
+        }
+    }
+    
+        public Cursor getLastPollDataCheck(){
+        SQLiteDatabase DB = this.getReadableDatabase();
+
+        String [] columns = {"pollID", "title","question", "latitude", "longitude", "yes", "noo"};
+
+        Cursor cursor = DB.query("PollsWithVal", columns,null,null,null,null, "pollID");
+        return cursor;
+    }
 
 }
