@@ -23,10 +23,14 @@
         <entry key="..\:/Users/sarah/AndroidStudioProjects/Ballot/app/src/main/res/mipmap-anydpi-v26/logo_round.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.16091156005859375" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1546875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15833333333333333" />
         <entry key="app/src/main/res/layout/activity_post_poll.xml" value="0.21623382568359373" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1546875" />
         <entry key="app/src/main/res/layout/activity_view_poll.xml" value="0.19676361083984378" />
         <entry key="app/src/main/res/layout/activity_vote_poll.xml" value="0.21184488932291667" />
+        <entry key="app/src/main/res/layout/result.xml" value="0.2037022908528645" />
+        <entry key="app/src/main/res/layout/silent-mode.xml" value="0.15833333333333333" />
+        <entry key="app/src/main/res/layout/silent_mode.xml" value="0.15833333333333333" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.1546875" />
         <entry key="app/src/main/res/layout/view_poll_list.xml" value="0.17706247965494792" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/post_poll_image2.xml" value="0.1" />

@@ -3,7 +3,12 @@ package com.example.ballot;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +16,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ViewPollAdapter extends RecyclerView.Adapter<ViewPollAdapter.MyViewHolder> {
 
@@ -40,14 +48,21 @@ public class ViewPollAdapter extends RecyclerView.Adapter<ViewPollAdapter.MyView
     public void onBindViewHolder(@NonNull final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.title.setText(String.valueOf(pollTitle.get(position)));
 
-//        holder.voteBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Global.currentSelectedPoll = poll;
-//                Intent intent = new Intent(context, VoteActivity.class);
-//                context.startActivity(intent);
-//            }
-//        });
+        holder.voteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String titleT= String.valueOf(pollTitle.get(position));
+                String msg= String.valueOf(pollQues.get(position));
+//!!!!!
+                Intent intent= new Intent(context, VotePoll.class);
+                intent.putExtra("title",titleT);
+                intent.putExtra("message",msg);
+
+                context.startActivity(intent);
+            }
+        });
+
 //        //Recyclerview onClickListener, view result
 //        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
 //            @Override

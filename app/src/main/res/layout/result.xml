@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Result">
+    <TableRow>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:text="Voting Result"
+
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp" />
+        <TextView
+            android:id="@+id/titleR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Question"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/quesR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"
+            />
+    </TableRow>
+
+    <TableRow/>
+    <TableRow/>
+
+    <TableRow>
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:id="@+id/YES1"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="YES"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:id="@+id/NO1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="50dp"
+            android:text="NO"
+            android:textSize="20sp"
+            />
+
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/yesR"
+            android:layout_width="178dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/noR"
+            android:layout_width="193dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="55dp"
+            android:textSize="20sp"
+            />
+
+    </TableRow>
+
+</TableLayout>
+

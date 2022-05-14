@@ -34,17 +34,18 @@ public class Home extends AppCompatActivity {
         dbHelper = new DBHelper(this);
         dbHelper.insertPoll("T1","Q1","37.4219983","-122.084");
         dbHelper.insertPoll("T2","Q2","37.4219983","-122.084");
-        dbHelper.insertPoll("T3","Q3","37.4219983","-122.084");
+        dbHelper.insertPoll("T3","Q13","37.4219983","-122.084");
         // onClick post poll button
         viewPollBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     // go to post a poll screen (make sure it work)
-                    Intent intent = new Intent(Home.this,ViewPoll.class);
+                    Intent intent = new Intent(Home.this,VotePoll.class);
                     startActivity(intent);
 
             }
         });
+
 
     }
 }

@@ -56,7 +56,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Boolean insertPoll(String title,String question,String latitude, String longitude){
-
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("title",title);
@@ -117,5 +116,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     return false;
 }
+    public void deleteAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM Polls");
+    }
 
 }

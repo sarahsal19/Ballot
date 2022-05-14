@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
 
@@ -38,6 +39,15 @@
         </activity>
         <activity android:name=".PostAPoll"
             android:exported="false"/>
+        <activity
+            android:name=".VotePoll"
+            android:exported="false" />
+        <activity
+            android:name=".Result"
+            android:exported="false" />
+        <activity
+            android:name=".SilentMode"
+            android:exported="false" />
     </application>
 <!--    <uses-sdk-->
 <!--        android:minSdkVersion="8"-->
