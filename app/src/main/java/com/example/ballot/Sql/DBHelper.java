@@ -30,7 +30,8 @@ public class DBHelper extends SQLiteOpenHelper {
         if (result == -1){
             return false;
         }else {
-           // DB.execSQL("DELETE FROM " + "UserDetails" + " WHERE "+"userID"+"='"+KEY_NAME+"'" );
+           // String KEY_NAME = "";
+           //DB.execSQL("DELETE FROM " + "UserDetails" + " WHERE "+"userID"+"='"+KEY_NAME+"'" );
             DB.close();
             return true;
         }

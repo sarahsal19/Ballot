@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
                     builder.setCancelable(true);
                     builder.setTitle("Wrong Credential");
-                    builder.setMessage("Wrong Credential");
+                    builder.setMessage("Make sure to write your correct email and password ");
                     builder.show();
                 }
                 dbHelper.close();

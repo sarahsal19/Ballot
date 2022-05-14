@@ -30,7 +30,12 @@ public class SignUp extends AppCompatActivity {
                // String number1 = number.getText().toString();
                 String email1 = email.getText().toString();
                 String pass1 = pass.getText().toString();
-                boolean b =dbHelper.insetUserData(name1,email1,pass1);
+                boolean b= false;
+                if (name1 == "" || email1 == "" || pass1 == ""){
+                 b = dbHelper.insetUserData(name1,email1,pass1);}
+                else {
+                    Toast.makeText(SignUp.this,"Invalid information, try again",Toast.LENGTH_SHORT).show();
+                }
                 if (b){
                     Toast.makeText(SignUp.this,"You are successfully registered!",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(SignUp.this,Login.class);
