@@ -56,8 +56,8 @@ String NameHolder, EmailHolder;
         pollTitle = new ArrayList<>();
         pollQues = new ArrayList<>();
 
-        latitude = "37.4219983";
-        longitude = "-122.084";
+        latitude = "37.4219248";
+        longitude = "-122.0840177";
         fineNearestLocation();
         //initLocation();
         //fineNearestLocation();

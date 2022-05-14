@@ -20,7 +20,7 @@
             android:id="@+id/imageView3"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:srcCompat="@mipmap/vote_foreground"
+            app:srcCompat="@drawable/voting"
             tools:layout_marginBottom="50dp" />
 
         <LinearLayout
