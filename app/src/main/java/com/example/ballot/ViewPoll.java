@@ -56,34 +56,45 @@ String NameHolder, EmailHolder;
         pollTitle = new ArrayList<>();
         pollQues = new ArrayList<>();
 
-        latitude = "37.4219248";
-        longitude = "-122.0840177";
-        fineNearestLocation();
-        //initLocation();
+        //latitude = "37.4219983";
+       // longitude = "-122.084";
         //fineNearestLocation();
+        initLocation();
 
-        adapter = new ViewPollAdapter(ViewPoll.this, this , pollTitle, pollQues);
 
-        Log.d("----- title",pollTitle.get(0));
-        Log.d("----- ques",pollQues.get(0));
-        pollsList = (RecyclerView) findViewById(R.id.pollList);
-        pollsList.setAdapter(adapter);
+//        adapter = new ViewPollAdapter(ViewPoll.this, this , pollTitle, pollQues);
+//
+//        Log.d("----- title",pollTitle.get(0));
+//        Log.d("----- ques",pollQues.get(0));
+//        pollsList = (RecyclerView) findViewById(R.id.pollList);
+//        pollsList.setAdapter(adapter);
        // pollsList.setLayoutManager(new LinearLayoutManager(ViewPoll.this));
     }
 
     private void fineNearestLocation(){
-
+        Log.d("--- location", "in fineNearestLocation");
         Cursor cursor = db.readPollData();
+        int i = 0;
         if(cursor.getCount() == 0){
             Log.d("tag", "No data");
         }else{
             while (cursor.moveToNext()){
                 if(latitude.equals(cursor.getString(3)) || latitude.contains(cursor.getString(3)) || longitude.equals(cursor.getString(4)) || longitude.contains(cursor.getString(4)) ) {
-                    pollTitle.add(cursor.getString(1));
-                    pollQues.add(cursor.getString(2));
+
+              if(pollTitle.isEmpty()){
+                  pollTitle.add(cursor.getString(1));
+                  pollQues.add(cursor.getString(2));
+           }
+              else if(!pollTitle.contains(cursor.getString(1))){
+                  pollTitle.add(cursor.getString(1));
+                  pollQues.add(cursor.getString(2));
+                  i= i+1;
+              }
+
                 }
             }
-            printTable() ;}
+            }
+        printTable() ;
     }
     public void printTable() {
         String tableString = "";
@@ -148,6 +159,14 @@ String NameHolder, EmailHolder;
 //        }
 
         fineNearestLocation();
+
+        adapter = new ViewPollAdapter(ViewPoll.this, this , pollTitle, pollQues);
+
+        Log.d("----- title",pollTitle.get(0));
+        Log.d("----- ques",pollQues.get(0));
+
+        pollsList = (RecyclerView) findViewById(R.id.pollList);
+        pollsList.setAdapter(adapter);
 
         dismissProgress();
     }
